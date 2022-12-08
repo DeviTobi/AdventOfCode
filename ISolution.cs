@@ -3,6 +3,6 @@
     internal interface ISolution
     {
         public abstract void Run();
-        public virtual void RunPartTwo() { }
+        public abstract void RunPartTwo();
     }
 }
