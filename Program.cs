@@ -6,7 +6,7 @@ namespace AdventOfCode_2022
     {
         private static readonly List<ISolution> solutionsToRun = new()
         {
-            new DayOne(), new DayTwo(), new DayThree(),
+            new DayOne(), new DayTwo(), new DayThree(), new DayFour(), new DayFive()
         };
 
         public static void Main()
