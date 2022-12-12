@@ -4,33 +4,34 @@
     {
         public void Run()
         {
+            Console.WriteLine(DetectStartOfMessage(4));
+        }
+
+        public void RunPartTwo()
+        {
+            Console.WriteLine(DetectStartOfMessage(14));
+        }
+
+        public int DetectStartOfMessage(int requiredDistinctCharacters)
+        {
             var dataPacket = File.ReadAllText("InputFiles\\Day-06-Input.txt");
 
             var queue = new Queue<char>();
 
-            var markerIndex = 0;
-            for(var i=0; i<dataPacket.Length; i++)
+            for (var i = 0; i < dataPacket.Length; i++)
             {
                 var c = dataPacket[i];
 
                 queue.Enqueue(c);
 
-                if (queue.Count > 4)
+                if (queue.Count > requiredDistinctCharacters)
                     queue.Dequeue();
 
-                if (queue.Count == 4 && MarkerFound(queue))
-                {
-                    markerIndex = i+1;
-                    break;
-                }
+                if (queue.Count == requiredDistinctCharacters && MarkerFound(queue))
+                    return i + 1;
             }
 
-            Console.WriteLine(markerIndex);
-        }
-
-        public void RunPartTwo()
-        {
-            // TODO
+            throw new Exception("Start of message not found");
         }
 
         public bool MarkerFound(Queue<char> queue)
